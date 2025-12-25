@@ -93,7 +93,10 @@ This extension integrates with Codex CLI using a **context-injection approach**:
 
 ---
 
-## Installation
+1.  **Enforcing Structure:** The AI cannot write code without first generating a Specification (`spec.md`) and a phased Plan (`plan.md`).
+2.  **Persistent Context:** It maintains a `codex/` directory in your project root which acts as the "Source of Truth" for your Product Vision, Tech Stack, and Workflow.
+3.  **Autonomous Implementation:** Using the `/implement` command, the agent works through your task list, verifies its own work, and only marks tasks as complete when they meet the project standards.
+4.  **Native Integration:** Built specifically for the Codex CLI ecosystem, utilizing native features like `/diff`, `/compact`, and `codex cloud`.
 
 ### Prerequisites
 
@@ -666,7 +669,7 @@ your-project/
 
 ---
 
-## Workflow
+To use this framework, you need to load the `AGENT.md` file as the system context when launching your Codex session.
 
 The development hierarchy:
 
