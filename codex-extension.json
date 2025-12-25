@@ -1,0 +1,34 @@
+{
+  "name": "codex-prd",
+  "version": "1.0.0",
+  "contextFileName": "AGENT.md",
+  "description": "PRD Extension for Codex CLI - Context-Driven Development with Ultra-Thinking and PRD Generation",
+  "author": "Vedant Parmar",
+  "compatibility": {
+    "codexCLI": ">=1.0.0"
+  },
+  "features": [
+    "Context-Driven Development",
+    "Ultra-Thinking Context Engineering",
+    "PRD Generation & Validation",
+    "Spec-Driven Implementation",
+    "Track Management",
+    "Autonomous Implementation",
+    "Protocol-Based Workflows"
+  ],
+  "integration": {
+    "method": "context-injection",
+    "usage": "codex --context ./codex/AGENT.md",
+    "notes": "AGENT.md loads all protocols and context for the Codex Agent"
+  },
+  "commands": {
+    "/setup": "Initialize project with product, tech stack, and workflow",
+    "/newTrack": "Start new feature/bug track with spec and plan generation",
+    "/implement": "Autonomous implementation following the active plan",
+    "/status": "View current project and track status",
+    "/validate": "Validate code against PRD and specs",
+    "/prd:generate": "Generate comprehensive PRD for a product idea",
+    "/prd:refine": "Refine and enhance existing PRD",
+    "/prd:validate": "Validate PRD completeness and quality"
+  }
+}
