@@ -1,6 +1,5 @@
 # Codex PRD Extension
 
-**Developed by Vedant Parmar**
 
 **Measure twice, code once.**
 
