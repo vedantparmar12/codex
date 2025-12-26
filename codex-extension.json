@@ -1,34 +1,63 @@
 {
   "name": "codex-prd",
-  "version": "1.0.0",
-  "contextFileName": "AGENTS.md",
-  "description": "PRD Extension for Codex CLI - Context-Driven Development with Ultra-Thinking and PRD Generation",
+  "version": "2.0.0",
+  "description": "PRD Extension for Codex CLI - Context-Driven Development with Simplified Workflows",
   "author": "Vedant Parmar",
   "compatibility": {
-    "codexCLI": ">=1.0.0"
+    "codexCLI": ">=1.0.0",
+    "platform": "OpenAI Codex CLI only"
   },
   "features": [
     "Context-Driven Development",
-    "Ultra-Thinking Context Engineering",
-    "PRD Generation & Validation",
     "Spec-Driven Implementation",
     "Track Management",
-    "Autonomous Implementation",
-    "Protocol-Based Workflows"
+    "State-Based Resume",
+    "Auto-Generate Options",
+    "Streamlined Q&A",
+    "Codex Skills Integration"
   ],
   "integration": {
-    "method": "agents-file-discovery",
-    "usage": "cd /path/to/project && codex",
-    "notes": "AGENTS.md is auto-discovered and loads all protocols and context for the Codex Agent"
+    "method": "codex-skills",
+    "skillsLocation": [
+      "~/.codex/skills/codex/ (user-scoped, all projects)",
+      ".codex/skills/codex/ (repo-scoped, this project only)"
+    ],
+    "usage": "codex CLI with skills enabled (--enable-skills flag or config)",
+    "invocation": "$setup, $newTrack, $implement, $status in codex TUI"
   },
-  "commands": {
-    "/setup": "Initialize project with product, tech stack, and workflow",
-    "/newTrack": "Start new feature/bug track with spec and plan generation",
-    "/implement": "Autonomous implementation following the active plan",
-    "/status": "View current project and track status",
-    "/validate": "Validate code against PRD and specs",
-    "/prd:generate": "Generate comprehensive PRD for a product idea",
-    "/prd:refine": "Refine and enhance existing PRD",
-    "/prd:validate": "Validate PRD completeness and quality"
+  "skills": {
+    "$setup": {
+      "file": "commands/codex/setup.toml",
+      "description": "Initialize project with product, tech stack, and workflow"
+    },
+    "$newTrack": {
+      "file": "commands/codex/newTrack.toml",
+      "description": "Create new feature/bug track with spec and plan"
+    },
+    "$implement": {
+      "file": "commands/codex/implement.toml",
+      "description": "Execute implementation following the active plan"
+    },
+    "$status": {
+      "file": "commands/codex/status.toml",
+      "description": "View current project and track status"
+    }
+  },
+  "installation": {
+    "user_scoped": {
+      "location": "~/.codex/skills/codex/",
+      "command": "cp -r commands/codex ~/.codex/skills/",
+      "scope": "Available in all projects"
+    },
+    "repo_scoped": {
+      "location": ".codex/skills/codex/",
+      "command": "cp -r commands/codex .codex/skills/",
+      "scope": "Only available in this repository"
+    }
+  },
+  "requirements": {
+    "codex_cli": "Install from OpenAI",
+    "skills_enabled": "Use --enable-skills flag or set in ~/.codex/config.toml",
+    "authentication": "codex login required"
   }
 }
