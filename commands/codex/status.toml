@@ -107,9 +107,9 @@ Generated: {current timestamp}
 
 ## Tracks Summary
 - Total Tracks: {count}
-- Completed: {count} ✅
-- In Progress: {count} 🔄
-- Pending: {count} ⏸️
+- Completed: {count}
+- In Progress: {count}
+- Pending: {count}
 
 ## Track Details
 
@@ -123,7 +123,7 @@ Generated: {current timestamp}
 **Status:** {In Progress | Blocked | On Track}
 
 {If blocked:}
-⚠️ **Blocker:** {blocker description}
+**Blocker:** {blocker description}
 
 ---
 
@@ -137,7 +137,7 @@ Generated: {current timestamp}
 ### [x] {Track 3 Title} ({track_id})
 **Type:** {feature|bug|chore}
 **Completed:** {date}
-✅ **Status:** Completed
+**Status:** Completed
 
 ## Overall Progress
 **Total Tasks Across All Tracks:** {total_tasks}
@@ -188,7 +188,7 @@ Generate ASCII progress bar based on overall completion:
 **26-50%:** `█████████░░░░░░░░░░░ 40%`
 **51-75%:** `███████████████░░░░░ 65%`
 **76-99%:** `██████████████████░░ 90%`
-**100%:** `████████████████████ 100%` ✅
+**100%:** `████████████████████ 100%`
 
 ---
 
@@ -197,19 +197,19 @@ Generate ASCII progress bar based on overall completion:
 Based on status analysis, suggest next actions:
 
 **If no tracks in progress:**
-> "💡 Recommendation: Start implementing with `/implement` or create a new track with `/newTrack [description]`"
+> "Recommendation: Start implementing with `/implement` or create a new track with `/newTrack [description]`"
 
 **If track is in progress:**
-> "💡 Recommendation: Continue current track with `/implement`"
+> "Recommendation: Continue current track with `/implement`"
 
 **If all tracks complete:**
-> "🎉 All tracks are complete! Create a new track with `/newTrack [description]` to continue development."
+> "All tracks are complete! Create a new track with `/newTrack [description]` to continue development."
 
 **If blockers exist:**
-> "⚠️ Recommendation: Resolve blockers before proceeding. Review the blocker description above."
+> "Recommendation: Resolve blockers before proceeding. Review the blocker description above."
 
 **If many tracks pending:**
-> "💡 Recommendation: Focus on completing in-progress tracks before starting new ones."
+> "Recommendation: Focus on completing in-progress tracks before starting new ones."
 
 ---
 
@@ -238,7 +238,7 @@ If useful, include:
 3. **Calculate accurate percentages** for each track
 4. **Identify blockers** prominently
 5. **Provide actionable next steps**
-6. **Use clear visual indicators** (✅ ⏸️ 🔄 ⚠️)
+6. **Use clear visual indicators**
 7. **Show progress bars** for visual clarity
 8. **List tracks in order**: In Progress → Pending → Completed
 9. **Validate tool calls** before proceeding

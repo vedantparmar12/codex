@@ -54,7 +54,7 @@ HALT.
 2. **If found:**
    > "Automatically selecting next incomplete track: '{track_description}'"
 3. **If all complete:**
-   > "All tracks are completed! 🎉"
+   > "All tracks are completed!"
    HALT.
 
 ---
@@ -189,7 +189,7 @@ Read the "Task Workflow" or "Development Commands" section in `workflow.md` and 
    ```
 
 3. **Announce:**
-   > "Track '{track_id}' is now complete! ✅"
+   > "Track '{track_id}' is now complete!"
 
 ---
 
@@ -239,7 +239,7 @@ Read the "Task Workflow" or "Development Commands" section in `workflow.md` and 
 1. **WARNING: Update RARELY**
    - Only if branding, voice, or core identity changed
 2. **If update needed:**
-   > "⚠️ WARNING: Track suggests changes to core product guidelines.
+   > "WARNING: Track suggests changes to core product guidelines.
    > Review carefully:
    >
    > ```diff
@@ -252,9 +252,9 @@ Read the "Task Workflow" or "Development Commands" section in `workflow.md` and 
 ### 7.3 Report Synchronization
 
 > "Documentation synchronization complete:
-> - ✅ product.md: {Updated | No changes needed}
-> - ✅ tech-stack.md: {Updated | No changes needed}
-> - ✅ product-guidelines.md: {Updated | No changes needed}"
+> - product.md: {Updated | No changes needed}
+> - tech-stack.md: {Updated | No changes needed}
+> - product-guidelines.md: {Updated | No changes needed}"
 
 ---
 

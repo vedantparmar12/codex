@@ -78,7 +78,7 @@ HALT - Do NOT proceed.
    > Proceeding with implementation..."
 
 6. **If NO incomplete tracks found**:
-   > "🎉 All tracks are complete! No pending work found.
+   > "All tracks are complete! No pending work found.
    >
    > **Next steps**:
    > - Create new track: `/newTrack "description"`
@@ -142,7 +142,7 @@ HALT - Await user instructions.
 
 ### 4.3 Announce Implementation Start
 
-> "🚀 **Starting implementation**: [Track Title]
+> "**Starting implementation**: [Track Title]
 >
 > **Track ID**: `[track_id]`
 > **Location**: `codex/tracks/[track_id]/`
@@ -295,7 +295,7 @@ Before marking task complete, verify ALL of these:
 **If this task is the LAST task in a phase**:
 
 1. **Announce phase completion**:
-   > "🎯 **Phase [X] Complete**: [Phase Name]
+   > "**Phase [X] Complete**: [Phase Name]
    >
    > All tasks in this phase have been completed. Proceeding to phase verification checkpoint..."
 
@@ -342,7 +342,7 @@ Execute verification tasks from workflow.md (if defined):
 
 #### 5.3.2 Report Phase Results
 
-> "📊 **Phase [X] Verification Results**
+> "**Phase [X] Verification Results**
 >
 > **Phase**: [Phase Name]
 > **Objective**: [Phase objective from plan.md]
@@ -434,7 +434,7 @@ Execute verification tasks from workflow.md (if defined):
 
 ### 6.2 Final Verification
 
-> "🎯 **All implementation tasks complete!**
+> "**All implementation tasks complete!**
 >
 > Running final verification before marking track complete..."
 
@@ -445,7 +445,7 @@ Execute verification tasks from workflow.md (if defined):
 4. **Spec alignment**: Verify all acceptance criteria from spec.md
 
 **Report results**:
-> "📊 **Final Verification Results**:
+> "**Final Verification Results**:
 >
 > All tests passing ([total] tests)
 > Code quality checks passed
@@ -461,7 +461,7 @@ Execute verification tasks from workflow.md (if defined):
 
 ### 6.3 Request Final Approval
 
-> "🎉 **Track implementation complete!**
+> "**Track implementation complete!**
 >
 > Before I mark this track as complete, please perform a final review:
 >
@@ -689,7 +689,7 @@ Same as 7.3, but for tech-stack.md
 
 ### 9.1 Final Announcement
 
-> "🎉 **Implementation Complete!**
+> "**Implementation Complete!**
 >
 > **Track**: [Track Title]
 > **Status**: Completed and documented
@@ -705,7 +705,7 @@ Same as 7.3, but for tech-stack.md
 > - View status: `/status`
 > - Implement next track: `/implement`
 >
-> Great work! 🚀"
+> Great work!"
 
 ---
 

@@ -701,7 +701,7 @@ Use actual values and current timestamp.
 
 [Brief one-line description]
 
-📁 [View Track Details](./tracks/[track_id]/)
+[View Track Details](./tracks/[track_id]/)
 ```
 
 3. **Write updated `codex/tracks.md`**
@@ -783,7 +783,7 @@ Use actual values and current timestamp.
 1. [Next pending task]
 2. [Following task]
 
-📁 [View Track](./codex/tracks/[track_id]/)
+[View Track](./codex/tracks/[track_id]/)
 
 ---
 
@@ -799,11 +799,11 @@ Use actual values and current timestamp.
 
 [List of completed tracks]
 
-### In Progress 🔄
+### In Progress
 
 [List of in-progress tracks]
 
-### Not Started 📋
+### Not Started
 
 [List of not-started tracks]
 

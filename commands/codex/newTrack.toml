@@ -358,7 +358,7 @@ Write approved plan content to: `codex/tracks/{track_id}/plan.md`
 
 {Brief 1-sentence description}
 
-📁 [View Track Details](./tracks/{track_id}/)
+[View Track Details](./tracks/{track_id}/)
 ```
 
 **Write updated content** back to `codex/tracks.md`

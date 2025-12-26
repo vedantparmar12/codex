@@ -147,7 +147,7 @@ Similar to spec validation but at product level.
 
 **Run all validation types and generate comprehensive report.**
 
-> "🔍 **Comprehensive Validation Report**
+> "**Comprehensive Validation Report**
 >
 > **Spec Compliance**: [Score]/10
 > **PRD Alignment**: [Score]/10

@@ -368,10 +368,10 @@ Risks: {what to watch for}
    > - {deliverable 2}
    >
    > Quality Gates:
-   > ✅ All tests passing
-   > ✅ Code coverage: {X}%
-   > ✅ Security scan: No issues
-   > ✅ Performance: Within targets
+   > All tests passing
+   > Code coverage: {X}%
+   > Security scan: No issues
+   > Performance: Within targets
    >
    > Please verify:
    > - [ ] Functionality works as expected
@@ -473,7 +473,7 @@ For each criterion:
 ### 7.5 Final Track Summary
 
 ```
-> "Track '{track-id}' Implementation Complete! 🎉
+> "Track '{track-id}' Implementation Complete!
 >
 > ## Summary
 > **Track**: {track title}
@@ -490,9 +490,9 @@ For each criterion:
 > - Code Quality: {linter score}
 >
 > ## Acceptance Criteria
-> ✅ {criterion 1}
-> ✅ {criterion 2}
-> ✅ {criterion 3}
+> {criterion 1}
+> {criterion 2}
+> {criterion 3}
 >
 > ## Challenges Overcome
 > {list challenges and solutions}
@@ -558,7 +558,7 @@ For each criterion:
 
 ### 9.1 When to Decide Autonomously
 
-✅ **Make decision autonomously:**
+**Make decision autonomously:**
 - Implementation details (how to code)
 - File structure (where to put code)
 - Test strategies (how to test)
@@ -566,7 +566,7 @@ For each criterion:
 - Performance optimizations
 - Code patterns (which pattern to use)
 
-⚠️ **Ask user for decision:**
+**Ask user for decision:**
 - Spec clarifications (what to build)
 - Acceptance criteria changes
 - Architecture changes
