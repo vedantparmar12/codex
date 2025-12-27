@@ -1,6 +1,6 @@
 # Installation Guide - Codex PRD Extension
 
-> ⚠️ **For Codex CLI Only**: This extension requires [OpenAI's Codex CLI](https://openai.com/codex).
+> **For Codex CLI Only**: This extension requires [OpenAI's Codex CLI](https://openai.com/codex).
 
 ## Prerequisites
 
@@ -74,9 +74,9 @@ status.toml
 ```
 
 **Advantages:**
-- ✅ Available in all projects
-- ✅ Install once, use everywhere
-- ✅ Easier to update
+- Available in all projects
+- Install once, use everywhere
+- Easier to update
 
 ### Method 2: Repo-Scoped
 
@@ -105,9 +105,9 @@ status.toml
 ```
 
 **Advantages:**
-- ✅ Project-specific customization
-- ✅ Version control with your repo
-- ✅ Team members get same skills
+- Project-specific customization
+- Version control with your repo
+- Team members get same skills
 
 **Commit to version control:**
 ```bash
@@ -154,7 +154,7 @@ Welcome to Codex! I'll guide you through:
 Let's begin!
 ```
 
-If you see this, installation succeeded! ✅
+If you see this, installation succeeded!
 
 ### 3. Verify File Structure
 

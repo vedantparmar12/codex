@@ -1,13 +1,53 @@
-description = "Execute tasks from a track's implementation plan"
-prompt = """
-## SYSTEM DIRECTIVE
-You are Codex Agent. Execute implementation tasks from a track's plan precisely according to the workflow.
-
-CRITICAL: Validate every tool call. If any fails, halt and await instructions.
-
+---
+name: prd-implement
+description: Execute implementation tasks from a track's plan following the workflow methodology
+metadata:
+  short-description: Execute track implementation autonomously
+  version: 2.0.0
+  author: Vedant Parmar
+  category: implementation
+  tags: [prd, implement, execution, autonomous, tdd, workflow]
+  usage: "Invoke with optional track name: prd-implement or prd-implement dark-mode"
 ---
 
-## 1.0 SETUP CHECK
+# PRD Implementation Skill
+
+Execute implementation tasks from a track's plan precisely according to your workflow methodology. This skill autonomously implements features, fixes bugs, and completes chores while following best practices defined in your workflow.
+
+## What This Does
+
+Executes a complete development track including:
+- **Track Selection** - Auto-selects next incomplete track or uses specified track
+- **Status Management** - Updates track status in tracks.md and metadata.json
+- **Task Execution** - Follows workflow methodology (TDD, standard, etc.)
+- **Quality Verification** - Runs tests, linters, and quality gates
+- **Progress Tracking** - Updates plan.md after each task
+- **Documentation Sync** - Updates product docs when track completes
+- **Track Cleanup** - Archives or deletes completed tracks
+
+## When to Use
+
+- Ready to implement a planned track
+- Want autonomous execution following your workflow
+- Need systematic task-by-task implementation
+- Want automatic quality verification and commits
+- Ready to update product docs after completion
+
+## How to Invoke
+
+Auto-select next incomplete track:
+```
+$prd-implement
+```
+
+Or specify a track:
+```
+$prd-implement dark-mode
+```
+
+## Instructions
+
+### Step 1: Setup Check
 
 **Verify required files:**
 - `codex/tech-stack.md`
@@ -16,15 +56,15 @@ CRITICAL: Validate every tool call. If any fails, halt and await instructions.
 - `codex/tracks.md`
 
 **If ANY missing:**
-> "Codex is not set up. Please run `/setup` first."
+> "Codex is not set up. Please run prd-setup skill first."
 
 HALT.
 
 ---
 
-## 2.0 TRACK SELECTION
+### Step 2: Track Selection
 
-### 2.1 Parse Tracks File
+#### 2.1 Parse Tracks File
 
 1. **Read** `codex/tracks.md`
 2. **Split** by `---` separator to identify track sections
@@ -38,9 +78,9 @@ HALT.
 
 HALT.
 
-### 2.2 Select Track
+#### 2.2 Select Track
 
-**If `{{args}}` contains track name:**
+**If track name provided as argument:**
 1. Perform case-insensitive match against parsed tracks
 2. If unique match found:
    > "Found track '{track_description}'. Is this correct? (yes/no)"
@@ -59,7 +99,7 @@ HALT.
 
 ---
 
-## 3.0 UPDATE TRACK STATUS
+### Step 3: Update Track Status
 
 **Before starting work:**
 
@@ -83,7 +123,7 @@ HALT.
 
 ---
 
-## 4.0 LOAD TRACK CONTEXT
+### Step 4: Load Track Context
 
 **Read these files into context:**
 1. `codex/tracks/{track_id}/plan.md`
@@ -99,15 +139,15 @@ HALT.
 
 ---
 
-## 5.0 EXECUTE TASKS
+### Step 5: Execute Tasks
 
-### 5.1 Workflow Execution
+#### 5.1 Workflow Execution
 
 **CRITICAL: The `codex/workflow.md` is the single source of truth for task execution.**
 
 Read the "Task Workflow" or "Development Commands" section in `workflow.md` and follow it precisely.
 
-### 5.2 Iterate Through Tasks
+#### 5.2 Iterate Through Tasks
 
 **For each task in `plan.md`:**
 
@@ -115,13 +155,13 @@ Read the "Task Workflow" or "Development Commands" section in `workflow.md` and 
    > "Starting: {Phase} > {Task}"
 
 2. **Follow Workflow:** Execute according to `workflow.md` procedures:
-   - If TDD workflow:
+   - **If TDD workflow:**
      1. Write test (expect failure)
      2. Run test (should fail)
      3. Implement feature
      4. Run test (should pass)
      5. Refactor if needed
-   - If standard workflow:
+   - **If standard workflow:**
      1. Implement feature
      2. Run tests
      3. Run linter
@@ -155,7 +195,7 @@ Read the "Task Workflow" or "Development Commands" section in `workflow.md` and 
      > Ready to proceed to next phase? (yes/no)"
    - Wait for user confirmation
 
-### 5.3 Error Handling
+#### 5.3 Error Handling
 
 **If any step fails:**
 1. **Do NOT mark task complete**
@@ -170,11 +210,11 @@ Read the "Task Workflow" or "Development Commands" section in `workflow.md` and 
 
 ---
 
-## 6.0 FINALIZE TRACK
+### Step 6: Finalize Track
 
 **After all tasks in plan.md are completed:**
 
-### 6.1 Update Status
+#### 6.1 Update Status
 
 1. **Update tracks.md:**
    - Find: `## [~] Track: {description}`
@@ -193,11 +233,11 @@ Read the "Task Workflow" or "Development Commands" section in `workflow.md` and 
 
 ---
 
-## 7.0 SYNCHRONIZE DOCUMENTATION
+### Step 7: Synchronize Documentation
 
 **Execute ONLY when track reaches `[x]` status.**
 
-### 7.1 Analyze Impact
+#### 7.1 Analyze Impact
 
 1. **Read completed spec:** `codex/tracks/{track_id}/spec.md`
 2. **Read project docs:**
@@ -205,7 +245,7 @@ Read the "Task Workflow" or "Development Commands" section in `workflow.md` and 
    - `codex/product-guidelines.md`
    - `codex/tech-stack.md`
 
-### 7.2 Propose Updates
+#### 7.2 Propose Updates
 
 **For product.md:**
 1. **Determine if update needed:**
@@ -249,7 +289,7 @@ Read the "Task Workflow" or "Development Commands" section in `workflow.md` and 
    > Approve these critical changes? (yes/no)"
 3. **Wait for approval** before updating
 
-### 7.3 Report Synchronization
+#### 7.3 Report Synchronization
 
 > "Documentation synchronization complete:
 > - product.md: {Updated | No changes needed}
@@ -258,11 +298,11 @@ Read the "Task Workflow" or "Development Commands" section in `workflow.md` and 
 
 ---
 
-## 8.0 TRACK CLEANUP
+### Step 8: Track Cleanup
 
 **Execute ONLY after track is complete and docs are synced.**
 
-### 8.1 Ask User Preference
+#### 8.1 Ask User Preference
 
 > "Track '{track_description}' is complete. What would you like to do?
 >
@@ -272,7 +312,7 @@ Read the "Task Workflow" or "Development Commands" section in `workflow.md` and 
 >
 > Please respond with A, B, or C."
 
-### 8.2 Execute Choice
+#### 8.2 Execute Choice
 
 **If A (Archive):**
 1. `mkdir -p codex/archive/`
@@ -291,18 +331,18 @@ Read the "Task Workflow" or "Development Commands" section in `workflow.md` and 
 
 ---
 
-## 9.0 NEXT STEPS
+### Step 9: Next Steps
 
 > "Implementation complete!
 >
 > Next options:
-> - Create new track: `/newTrack [description]`
-> - Check status: `/status`
-> - Implement next track: `/implement`"
+> - Create new track: Use prd-track skill
+> - Check status: Use prd-status skill
+> - Implement next track: Use prd-implement skill again"
 
 ---
 
-## CRITICAL RULES
+## Critical Rules
 
 1. **Follow workflow.md exactly** - it's the source of truth
 2. **Update plan.md** after each task
@@ -314,4 +354,46 @@ Read the "Task Workflow" or "Development Commands" section in `workflow.md` and 
 8. **Only sync docs** after track is fully complete
 9. **Get user approval** before updating project docs
 10. **Respect workflow.md protocols** for verification and checkpoints
-"""
+
+## References
+
+- See `references/implementation.md` for detailed protocol
+
+## Success Criteria
+
+Implementation is complete when:
+- [ ] All tasks in plan.md marked as complete
+- [ ] All quality checks pass
+- [ ] Track status updated to completed in tracks.md and metadata.json
+- [ ] Product docs synchronized (if needed)
+- [ ] Track archived/deleted/kept per user preference
+- [ ] User notified of completion
+
+## Autonomous Operation
+
+This skill operates autonomously but with safety mechanisms:
+
+**May Autonomously:**
+- Read any project files
+- Write code according to approved plans
+- Run tests and verification commands
+- Update plan.md and tracks.md
+- Create new files as specified in plan
+- Refactor code within approved scope
+
+**Must Ask Permission To:**
+- Deviate from approved plan
+- Delete existing files
+- Modify core context files (product.md, tech-stack.md, workflow.md)
+- Install new dependencies
+- Change git configuration
+- Execute destructive operations
+- Modify database schemas
+
+## Error Handling
+
+- If setup files missing → Direct user to prd-setup skill
+- If no tracks found → Suggest creating track with prd-track skill
+- If task fails → Pause and ask user for decision
+- If quality gate fails → Do not proceed until fixed
+- If file write fails → Report error and retry once

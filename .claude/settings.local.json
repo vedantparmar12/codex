@@ -3,5 +3,9 @@
     "allow": [
       "Bash(wc -l:*)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "shadcn"
+  ],
+  "enableAllProjectMcpServers": true
 }

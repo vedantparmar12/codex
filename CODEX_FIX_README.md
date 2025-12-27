@@ -11,7 +11,7 @@ The original codex extension was broken because:
 
 ## Solution Applied
 
-### ✅ What Was Fixed
+### What Was Fixed
 
 1. **Created Real Command Files (TOML)**
    - `commands/codex/setup.toml` - Project initialization
@@ -36,7 +36,7 @@ The original codex extension was broken because:
    - Clear progress indicators
    - Phase checkpointing
 
-### 📋 Key Improvements Adopted from Conductor
+### Key Improvements Adopted from Conductor
 
 | Feature | Before | After |
 |---------|--------|-------|
@@ -138,7 +138,7 @@ B) Suggest Changes
 
 > A
 
-✅ Setup complete!
+Setup complete!
 Next: Create your first track
 ```
 
@@ -168,9 +168,9 @@ codex/
 
 | Command | Purpose | Questions | State Tracking | Resume |
 |---------|---------|-----------|----------------|--------|
-| `$setup` | Initialize project | Max 5 per section | ✅ Yes | ✅ Yes |
-| `$newTrack` | Create track | 3-5 (type-based) | ✅ Yes | N/A |
-| `$implement` | Execute plan | 0 (follows plan) | ✅ Yes | ✅ Yes |
+| `$setup` | Initialize project | Max 5 per section | Yes | Yes |
+| `$newTrack` | Create track | 3-5 (type-based) | Yes | N/A |
+| `$implement` | Execute plan | 0 (follows plan) | Yes | Yes |
 | `$status` | View progress | 0 | N/A | N/A |
 
 ## State Tracking Examples
@@ -220,7 +220,7 @@ E) Auto-generate and review product.md
 
 [User selects E]
 
-✅ Auto-generated rest of product.md
+Auto-generated rest of product.md
 [Shows draft for approval]
 ```
 

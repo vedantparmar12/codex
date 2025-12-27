@@ -1,13 +1,53 @@
-description = "Create a new development track with specification and implementation plan"
-prompt = """
-## SYSTEM DIRECTIVE
-You are Codex Agent. Create a new development track through interactive spec and plan generation.
-
-CRITICAL: Validate every tool call. If any fails, halt and await instructions.
-
+---
+name: prd-track
+description: Create new development track with specification and implementation plan - handles features, bugs, and chores
+metadata:
+  short-description: Create development track with spec and plan
+  version: 2.0.0
+  author: Vedant Parmar
+  category: track-management
+  tags: [prd, track, specification, planning, feature, bug, chore]
+  usage: "Invoke with track description (optional): prd-track Add user authentication"
 ---
 
-## 1.0 SETUP CHECK
+# PRD Track Creation Skill
+
+Create a new development track through interactive spec and plan generation. This skill guides you through creating comprehensive specifications and implementation plans for features, bugs, and other work items.
+
+## What This Does
+
+Creates a complete development track including:
+- **Specification** (spec.md) - Detailed requirements and acceptance criteria
+- **Implementation Plan** (plan.md) - Phased breakdown of tasks and sub-tasks
+- **Metadata** (metadata.json) - Track information and status
+- **Registry Entry** - Updates tracks.md with new track
+
+## When to Use
+
+- Adding a new feature to your product
+- Creating a bug fix task
+- Planning a refactor or chore
+- Need structured approach to development work
+- Want clear acceptance criteria before coding
+
+## How to Invoke
+
+You can invoke this skill with or without a description:
+
+```
+$prd-track Add user authentication
+```
+
+or
+
+```
+$prd-track
+```
+(Will prompt for description)
+
+## Instructions
+
+### Step 1: Setup Check
 
 **Verify required files exist:**
 - `codex/tech-stack.md`
@@ -16,13 +56,13 @@ CRITICAL: Validate every tool call. If any fails, halt and await instructions.
 - `codex/tracks.md`
 
 **If ANY missing:**
-> "Codex is not set up. Please run `/setup` first."
+> "Codex is not set up. Please run prd-setup skill first."
 
 HALT. Do NOT proceed.
 
 ---
 
-## 2.0 LOAD CONTEXT
+### Step 2: Load Context
 
 **Read these files to inform questions:**
 1. `codex/product.md` - Product vision
@@ -31,22 +71,24 @@ HALT. Do NOT proceed.
 4. `codex/workflow.md` - Development workflow
 5. `codex/tracks.md` - Existing tracks
 
+This context will help generate better questions and defaults.
+
 ---
 
-## 3.0 GET TRACK DESCRIPTION
+### Step 3: Get Track Description
 
-**If `{{args}}` has content:**
+**If description provided as argument:**
 - Use it as track description
-- Example: `/newTrack "Add user authentication"`
+- Example: `$prd-track "Add user authentication"`
 
-**If `{{args}}` empty:**
+**If no description provided:**
 > "Please describe the track you want to create (feature, bug fix, chore, etc.)."
 
 Wait for response.
 
 ---
 
-## 4.0 INFER TRACK TYPE
+### Step 4: Infer Track Type
 
 Analyze description. Classify as:
 - **feature**: New functionality
@@ -55,22 +97,24 @@ Analyze description. Classify as:
 - **enhancement**: Improve existing feature
 - **docs**: Documentation only
 
-**Do NOT ask user** - infer from description.
+**Do NOT ask user** - infer from description automatically.
 
 **Examples:**
 - "Add dark mode" → feature
 - "Fix login crash" → bug
 - "Refactor auth module" → chore
 - "Improve search speed" → enhancement
+- "Update API docs" → docs
 
 ---
 
-## 5.0 INTERACTIVE SPEC GENERATION
+### Step 5: Interactive Spec Generation
 
-### 5.1 Announce
+#### 5.1 Announce
+
 > "I'll guide you through creating a specification for this track."
 
-### 5.2 Question Rules
+#### 5.2 Question Rules
 
 **Ask ONE question at a time. Wait for response.**
 
@@ -89,7 +133,7 @@ E) Auto-generate and review spec.md
 - **Additive** (multiple answers): Add "(Select all that apply)"
 - **Exclusive** (single answer): No qualifier
 
-### 5.3 Questions for FEATURE Tracks (3-5 questions)
+#### 5.3 Questions for FEATURE Tracks (3-5 questions)
 
 1. **User Impact** (Additive):
    > "Who will benefit from this feature? (Select all that apply)
@@ -136,7 +180,7 @@ E) Auto-generate and review spec.md
    > D) Type your own answer
    > E) Auto-generate and review spec.md"
 
-### 5.4 Questions for BUG Tracks (2-3 questions)
+#### 5.4 Questions for BUG Tracks (2-3 questions)
 
 1. **Current Behavior**:
    > "What is the incorrect behavior?
@@ -161,7 +205,7 @@ E) Auto-generate and review spec.md
    > B) Type your own answer
    > C) Auto-generate and review spec.md"
 
-### 5.5 Questions for CHORE Tracks (2-3 questions)
+#### 5.5 Questions for CHORE Tracks (2-3 questions)
 
 1. **Scope**:
    > "What is the scope of this work?
@@ -178,14 +222,14 @@ E) Auto-generate and review spec.md
    > B) Type your own answer
    > C) Auto-generate and review spec.md"
 
-### 5.6 Auto-Generate Logic
+#### 5.6 Auto-Generate Logic
 
 **If user selects Option E:**
 - Stop asking questions immediately
 - Infer remaining details from context + previous answers
 - Proceed to draft spec
 
-### 5.7 Draft & Approve spec.md
+#### 5.7 Draft & Approve spec.md
 
 1. **Generate spec.md** with sections:
    - Overview
@@ -211,16 +255,17 @@ E) Auto-generate and review spec.md
 
 3. **Loop until approved**
 
-4. **Store spec** (don't write file yet - will write all together in Section 7.0)
+4. **Store spec** (don't write file yet - will write all together in Step 7)
 
 ---
 
-## 6.0 INTERACTIVE PLAN GENERATION
+### Step 6: Interactive Plan Generation
 
-### 6.1 Announce
+#### 6.1 Announce
+
 > "Now I'll create an implementation plan based on the approved spec."
 
-### 6.2 Generate plan.md
+#### 6.2 Generate plan.md
 
 **Requirements:**
 1. Read approved spec
@@ -271,7 +316,7 @@ E) Auto-generate and review spec.md
 - Testing/verification steps
 - Dependencies between phases
 
-### 6.3 Present & Approve
+#### 6.3 Present & Approve
 
 > "I've drafted the implementation plan. Please review:
 >
@@ -286,11 +331,11 @@ Loop until approved.
 
 ---
 
-## 7.0 CREATE TRACK ARTIFACTS
+### Step 7: Create Track Artifacts
 
 Once spec and plan approved:
 
-### 7.1 Check for Duplicate
+#### 7.1 Check for Duplicate
 
 1. List existing tracks: `ls codex/tracks/`
 2. Extract short names from track IDs (format: `shortname_YYYYMMDD`)
@@ -298,7 +343,7 @@ Once spec and plan approved:
    > "A track with name '{shortname}' already exists. Please choose a different name or resume the existing track."
    HALT.
 
-### 7.2 Generate Track ID
+#### 7.2 Generate Track ID
 
 Format: `{shortname}_{YYYYMMDD}`
 
@@ -313,11 +358,11 @@ Format: `{shortname}_{YYYYMMDD}`
 - Max 30 chars for shortname
 - Use current date
 
-### 7.3 Create Directory
+#### 7.3 Create Directory
 
 `mkdir -p codex/tracks/{track_id}/`
 
-### 7.4 Write metadata.json
+#### 7.4 Write metadata.json
 
 ```json
 {
@@ -332,15 +377,15 @@ Format: `{shortname}_{YYYYMMDD}`
 
 Write to: `codex/tracks/{track_id}/metadata.json`
 
-### 7.5 Write spec.md
+#### 7.5 Write spec.md
 
 Write approved spec content to: `codex/tracks/{track_id}/spec.md`
 
-### 7.6 Write plan.md
+#### 7.6 Write plan.md
 
 Write approved plan content to: `codex/tracks/{track_id}/plan.md`
 
-### 7.7 Update tracks.md
+#### 7.7 Update tracks.md
 
 **Read current `codex/tracks.md`**
 
@@ -365,9 +410,9 @@ Write approved plan content to: `codex/tracks/{track_id}/plan.md`
 
 ---
 
-## 8.0 FINALIZE
+### Step 8: Finalize
 
-### 8.1 Announce Success
+#### 8.1 Announce Success
 
 > "New track created successfully!
 >
@@ -380,11 +425,11 @@ Write approved plan content to: `codex/tracks/{track_id}/plan.md`
 > - Metadata: codex/tracks/{track_id}/metadata.json
 >
 > Next steps:
-> 1. Start implementation: `/implement`
-> 2. Check status: `/status`
+> 1. Start implementation: Use prd-implement skill
+> 2. Check status: Use prd-status skill
 > 3. View plan: Read codex/tracks/{track_id}/plan.md"
 
-### 8.2 Optional Git Commit
+#### 8.2 Optional Git Commit
 
 **If user wants to commit:**
 ```bash
@@ -395,7 +440,7 @@ git commit -m "codex(track): Create {track_id}"
 
 ---
 
-## CRITICAL RULES
+## Critical Rules
 
 1. **Ask ONE question at a time**
 2. **Wait for user response** before proceeding
@@ -407,4 +452,25 @@ git commit -m "codex(track): Create {track_id}"
 8. **Check for duplicates** before creating track
 9. **All artifacts in single directory**: `codex/tracks/{track_id}/`
 10. **Update tracks.md** to register the new track
-"""
+
+## References
+
+- See `references/track_management.md` for detailed protocol
+
+## Success Criteria
+
+Track creation is complete when:
+- [ ] Track ID generated
+- [ ] Directory created: `codex/tracks/{track_id}/`
+- [ ] `metadata.json` written with correct structure
+- [ ] `spec.md` written with approved content
+- [ ] `plan.md` written with approved content
+- [ ] `tracks.md` updated with new track entry
+- [ ] User notified of success
+
+## Error Handling
+
+- If setup files missing → Direct user to prd-setup skill
+- If duplicate track name → Ask for different name
+- If file write fails → Report error and retry once
+- If context files unreadable → Warn and continue with generic questions

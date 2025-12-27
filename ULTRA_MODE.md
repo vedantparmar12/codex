@@ -6,8 +6,8 @@ Codex PRD Extension now offers **two implementation modes**:
 
 | Mode | Skill | Best For | Speed | Depth |
 |------|-------|----------|-------|-------|
-| **Standard** | `$implement` | Simple features, quick iterations | ⚡ Fast | ✓ Basic |
-| **Ultra** | `$implement-ultra` | Complex projects, mission-critical code | 🧠 Deep | ✓✓✓ Advanced |
+| **Standard** | `$implement` | Simple features, quick iterations | Fast | Basic |
+| **Ultra** | `$implement-ultra` | Complex projects, mission-critical code | Deep | Advanced |
 
 ---
 
@@ -35,7 +35,7 @@ $implement
 # - Executes tasks
 # - Runs tests
 # - Commits
-# ✅ Done in 5 minutes
+# Done in 5 minutes
 ```
 
 ---
@@ -71,7 +71,7 @@ $implement-ultra
 # - Documents architecture decisions
 # - Validates security
 # - Creates comprehensive docs
-# ✅ Done in 30 minutes (but production-ready)
+# Done in 30 minutes (but production-ready)
 ```
 
 ---
@@ -162,7 +162,7 @@ Then implement with ALL these considerations.
 
 **Standard:**
 ```
-Feature implemented ✅
+Feature implemented
 Move to next task
 ```
 
@@ -186,7 +186,7 @@ Document reflection in git note:
 - What I learned
 - What to watch for
 
-ONLY THEN: Mark complete ✅
+ONLY THEN: Mark complete
 ```
 
 ### 5. Continuous Validation
@@ -225,18 +225,18 @@ If unclear: Ask user
 **Ultra:**
 ```
 Autonomous decisions (no user input):
-✅ How to implement (code details)
-✅ Where to put files (structure)
-✅ Which patterns to use
-✅ How to test
-✅ Performance optimizations
+- How to implement (code details)
+- Where to put files (structure)
+- Which patterns to use
+- How to test
+- Performance optimizations
 
 Ask user for decisions:
-⚠️ Spec clarifications
-⚠️ Acceptance criteria changes
-⚠️ Architecture changes
-⚠️ Breaking changes
-⚠️ Security trade-offs
+- Spec clarifications
+- Acceptance criteria changes
+- Architecture changes
+- Breaking changes
+- Security trade-offs
 
 Document autonomous decisions:
 "Chose approach X because Y"
@@ -292,9 +292,9 @@ Steps:
 2. Read plan: "Create login endpoint"
 3. Implement login endpoint
 4. Write basic tests (happy path)
-5. Run tests ✅
+5. Run tests
 6. Commit: "Add authentication"
-7. Done ✅
+7. Done
 
 Result: Working feature, basic coverage
 ```
@@ -333,20 +333,20 @@ Steps:
    - Add comprehensive error messages
 
 5. Comprehensive Testing (5 min)
-   - Happy path: Valid login ✅
+   - Happy path: Valid login
    - Edge cases:
-     - Expired token ✅
-     - Invalid credentials ✅
-     - Missing fields ✅
-     - SQL injection attempt ✅
-     - Brute force (>5 attempts) ✅
-   - Coverage: 95% ✅
+     - Expired token
+     - Invalid credentials
+     - Missing fields
+     - SQL injection attempt
+     - Brute force (>5 attempts)
+   - Coverage: 95%
 
 6. Quality Gates (2 min)
-   - Tests: 15 passing ✅
-   - Linter: Clean ✅
-   - Security scan: No issues ✅
-   - Performance: <10ms validation ✅
+   - Tests: 15 passing
+   - Linter: Clean
+   - Security scan: No issues
+   - Performance: <10ms validation
 
 7. Self-Reflection & Documentation (3 min)
    - Git note:
@@ -369,7 +369,7 @@ Steps:
      Lessons: Consider adding 2FA in future
      Risks: Monitor for suspicious login patterns"
 
-8. Commit & Validate ✅
+8. Commit & Validate
 
 Result: Production-ready, secure, well-tested, documented
 ```
@@ -380,27 +380,27 @@ Result: Production-ready, secure, well-tested, documented
 
 ### Use Standard Mode (`$implement`) for:
 
-- ✅ UI components (buttons, forms)
-- ✅ Simple CRUD operations
-- ✅ Styling changes
-- ✅ Documentation updates
-- ✅ Configuration changes
-- ✅ Prototyping
-- ✅ Non-critical features
-- ✅ When time is critical
+- UI components (buttons, forms)
+- Simple CRUD operations
+- Styling changes
+- Documentation updates
+- Configuration changes
+- Prototyping
+- Non-critical features
+- When time is critical
 
 ### Use Ultra Mode (`$implement-ultra`) for:
 
-- 🧠 Authentication/Authorization
-- 🧠 Payment processing
-- 🧠 Data migrations
-- 🧠 Security features
-- 🧠 Performance-critical code
-- 🧠 Architectural changes
-- 🧠 Complex algorithms
-- 🧠 Multi-service integrations
-- 🧠 Mission-critical features
-- 🧠 When quality > speed
+- Authentication/Authorization
+- Payment processing
+- Data migrations
+- Security features
+- Performance-critical code
+- Architectural changes
+- Complex algorithms
+- Multi-service integrations
+- Mission-critical features
+- When quality > speed
 
 ---
 
@@ -437,7 +437,7 @@ E  # Auto-generate
 
 # Implement quickly
 $implement
-# ✅ Done in 5 minutes
+# Done in 5 minutes
 
 $status
 # Progress: 100%
@@ -458,12 +458,12 @@ $newTrack "Add payment processing with Stripe"
 
 # Implement with depth
 $implement-ultra
-# 🧠 Analyzes deeply
-# 🧠 Considers security
-# 🧠 Handles edge cases
-# 🧠 Comprehensive tests
-# 🧠 Documents everything
-# ✅ Done in 30 minutes (production-ready)
+# Analyzes deeply
+# Considers security
+# Handles edge cases
+# Comprehensive tests
+# Documents everything
+# Done in 30 minutes (production-ready)
 
 $status
 # Progress: 100%
@@ -522,7 +522,7 @@ Before `$implement-ultra` marks a task complete, it verifies:
 - [ ] Documented decisions
 - [ ] Updated context if needed
 
-**All ✅ = Task complete**
+**All checkmarks = Task complete**
 
 ---
 
@@ -598,16 +598,16 @@ Before `$implement-ultra` marks a task complete, it verifies:
 
 # Simple features (Standard)
 $implement
-- Add header navigation ✅ (5 min)
-- Add footer ✅ (3 min)
-- Add about page ✅ (5 min)
-- Style login form ✅ (7 min)
+- Add header navigation (5 min)
+- Add footer (3 min)
+- Add about page (5 min)
+- Style login form (7 min)
 
 # Complex features (Ultra)
 $implement-ultra
-- Add authentication ✅ (30 min, secure)
-- Add payment processing ✅ (45 min, robust)
-- Add data export ✅ (35 min, validated)
+- Add authentication (30 min, secure)
+- Add payment processing (45 min, robust)
+- Add data export (35 min, validated)
 
 Total time: 20 + 110 = 130 minutes
 Result: Fast iteration + rock-solid core features

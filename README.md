@@ -2,7 +2,7 @@
 
 **Version 2.0.0** - Context-Driven Development for Codex CLI
 
-> ⚠️ **Codex CLI Only**: This extension is designed exclusively for [OpenAI's Codex CLI](https://openai.com/codex). It will NOT work with Claude Code, GitHub Copilot, or other AI coding tools.
+> **Codex CLI Only**: This extension is designed exclusively for [OpenAI's Codex CLI](https://openai.com/codex). It will NOT work with Claude Code, GitHub Copilot, or other AI coding tools.
 
 ## What is This?
 
@@ -89,7 +89,7 @@ What do you want to build?
 Who are your target users?
 E) Auto-generate and review product.md  ← Select this!
 
-✅ Setup complete in 30 seconds!
+Setup complete in 30 seconds!
 ```
 
 ### 2. Create Your First Track
@@ -301,7 +301,7 @@ Sequential questioning for clarity:
 
 | Aspect | Old (v1.0) | New (v2.0) |
 |--------|-----------|-----------|
-| Commands | Virtual ❌ | Real skills ✅ |
+| Commands | Virtual (No) | Real skills (Yes) |
 | Questions | 15+ | Max 5 |
 | Auto-generate | No | Yes (Option E) |
 | Resume | No | Yes |

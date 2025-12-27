@@ -1,19 +1,53 @@
-description = "Display current project and track progress status"
-prompt = """
-## SYSTEM DIRECTIVE
-You are Codex Agent. Provide a comprehensive status overview of the project.
-
-CRITICAL: Validate every tool call. If any fails, halt and await instructions.
-
+---
+name: prd-status
+description: Display comprehensive project and track progress status with metrics and recommendations
+metadata:
+  short-description: View project and track status
+  version: 2.0.0
+  author: Vedant Parmar
+  category: reporting
+  tags: [prd, status, progress, metrics, reporting, dashboard]
 ---
 
-## 1.0 SETUP CHECK
+# PRD Status Skill
+
+Provide a comprehensive status overview of the project including track progress, current work, blockers, and recommendations for next steps.
+
+## What This Does
+
+Generates a detailed status report including:
+- **Project Overview** - High-level project health
+- **Tracks Summary** - Count of completed, in-progress, and pending tracks
+- **Track Details** - Progress percentage, current phase, current task
+- **Overall Progress** - Aggregate metrics with visual progress bar
+- **Next Actions** - Recommended next steps
+- **Blockers** - Any issues preventing progress
+- **Recommendations** - Context-aware suggestions
+
+## When to Use
+
+- Check current project status
+- Review track progress
+- Identify what to work on next
+- Find blockers or issues
+- Get overview before starting work
+- Report progress to stakeholders
+
+## How to Invoke
+
+```
+$prd-status
+```
+
+## Instructions
+
+### Step 1: Setup Check
 
 **Verify tracks file exists:**
 - Check: `codex/tracks.md` exists and is not empty
 
 **If missing or empty:**
-> "Project not set up or tracks.md is corrupted. Please run `/setup` to initialize."
+> "Project not set up or tracks.md is corrupted. Please run prd-setup skill to initialize."
 
 HALT.
 
@@ -23,15 +57,15 @@ HALT.
 - `codex/product.md`
 
 **If ANY missing:**
-> "Codex is not fully set up. Please run `/setup` to initialize."
+> "Codex is not fully set up. Please run prd-setup skill to initialize."
 
 HALT.
 
 ---
 
-## 2.0 READ PROJECT DATA
+### Step 2: Read Project Data
 
-### 2.1 Read Tracks File
+#### 2.1 Read Tracks File
 
 1. **Read:** `codex/tracks.md`
 2. **Parse:** Split by `---` separator to identify track sections
@@ -42,7 +76,7 @@ HALT.
    - Track type (if shown)
    - Creation date (if shown)
 
-### 2.2 Read Track Plans
+#### 2.2 Read Track Plans
 
 1. **List track directories:** `ls codex/tracks/`
 2. **For each track:**
@@ -56,9 +90,9 @@ HALT.
 
 ---
 
-## 3.0 ANALYZE STATUS
+### Step 3: Analyze Status
 
-### 3.1 Calculate Metrics
+#### 3.1 Calculate Metrics
 
 **Per Track:**
 - Total phases
@@ -75,7 +109,7 @@ HALT.
 - Tracks pending: Count `[ ]` in tracks.md
 - Overall progress: Aggregate across all tracks
 
-### 3.2 Identify Current Work
+#### 3.2 Identify Current Work
 
 **Current Phase:**
 - Find first phase with incomplete tasks in active track
@@ -91,9 +125,9 @@ HALT.
 
 ---
 
-## 4.0 PRESENT STATUS REPORT
+### Step 4: Present Status Report
 
-### 4.1 Report Format
+#### 4.1 Report Format
 
 Present status in this format:
 
@@ -149,7 +183,7 @@ Generated: {current timestamp}
 
 ## Next Actions
 1. {Next pending task from active track}
-2. {Following task or "Create new track with /newTrack"}
+2. {Following task or "Create new track with prd-track skill"}
 
 ## Blockers
 {List any blockers, or "None"}
@@ -158,7 +192,7 @@ Generated: {current timestamp}
 {Suggest next steps based on status}
 ```
 
-### 4.2 Status Determination Logic
+#### 4.2 Status Determination Logic
 
 **Completed:**
 - All tracks are `[x]`
@@ -179,7 +213,7 @@ Generated: {current timestamp}
 - Implementation halted
 - Requires user intervention
 
-### 4.3 Progress Bar
+#### 4.3 Progress Bar
 
 Generate ASCII progress bar based on overall completion:
 
@@ -192,18 +226,18 @@ Generate ASCII progress bar based on overall completion:
 
 ---
 
-## 5.0 PROVIDE RECOMMENDATIONS
+### Step 5: Provide Recommendations
 
 Based on status analysis, suggest next actions:
 
 **If no tracks in progress:**
-> "Recommendation: Start implementing with `/implement` or create a new track with `/newTrack [description]`"
+> "Recommendation: Start implementing with prd-implement skill or create a new track with prd-track skill"
 
 **If track is in progress:**
-> "Recommendation: Continue current track with `/implement`"
+> "Recommendation: Continue current track with prd-implement skill"
 
 **If all tracks complete:**
-> "All tracks are complete! Create a new track with `/newTrack [description]` to continue development."
+> "All tracks are complete! Create a new track with prd-track skill to continue development."
 
 **If blockers exist:**
 > "Recommendation: Resolve blockers before proceeding. Review the blocker description above."
@@ -213,7 +247,7 @@ Based on status analysis, suggest next actions:
 
 ---
 
-## 6.0 ADDITIONAL INSIGHTS (OPTIONAL)
+### Step 6: Additional Insights (Optional)
 
 If useful, include:
 
@@ -231,7 +265,7 @@ If useful, include:
 
 ---
 
-## CRITICAL RULES
+## Critical Rules
 
 1. **Always show current timestamp**
 2. **Parse tracks.md correctly** using `---` separator
@@ -243,4 +277,24 @@ If useful, include:
 8. **List tracks in order**: In Progress → Pending → Completed
 9. **Validate tool calls** before proceeding
 10. **Handle missing data gracefully** (e.g., if metadata.json missing)
-"""
+
+## Success Criteria
+
+Status report is complete when:
+- [ ] Current timestamp shown
+- [ ] All tracks parsed from tracks.md
+- [ ] Progress calculated for each track
+- [ ] Overall progress calculated
+- [ ] Current work identified
+- [ ] Blockers identified (if any)
+- [ ] Recommendations provided
+- [ ] Progress bar displayed
+- [ ] Report formatted clearly
+
+## Error Handling
+
+- If tracks.md missing → Direct to prd-setup skill
+- If track directory missing → Note in report and continue
+- If plan.md unreadable → Show track but mark as "Unable to calculate progress"
+- If metadata.json missing → Use data from tracks.md only
+- If all reads fail → Report error and suggest checking file integrity
